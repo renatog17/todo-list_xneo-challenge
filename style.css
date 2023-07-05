@@ -1,0 +1,77 @@
+body {
+    justify-content: center;
+    align-items: center;
+    background-color: #a9a9a9;
+    height: 100vh;
+    display: flex;
+    background-image: url("imgs/5-icons.png");
+}
+
+#todo-list {
+    background-color: rgb(255, 255, 255);
+    font-family: 'Golos Text', sans-serif;
+    font-family: 'Prompt', sans-serif;
+    font-family: 'Shantell Sans', cursive;
+    width: 600px;
+    box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.2);
+    position: absolute;
+}
+
+#left-margin {
+    height: 400px;
+    width: 25px;
+    background-image: url("imgs/left-margin.png");
+    background-repeat: repeat;
+    background-size: 25px 25px;
+    float: left;
+}
+
+#tasks {
+    padding-left: 40px;
+    padding-top: 20px;
+    width: 500px;
+}
+
+#btn-add{
+    background-image: url('./imgs/botao-adicionar.png');
+    position: relative;
+    top: 340px;
+    left: 475px;
+    height: 30px;
+    border: none;
+    background-color: #d5ffcf;
+}
+
+#form {
+    height: 250px;
+    width: 300px;
+    display: none;
+    background-color: #d5ffcf;
+    padding: 20px;
+    margin: 40px 137px;
+    border-radius: 15px;
+}
+
+#form form{
+    padding: 5px;
+    border-radius: 15px;
+    
+}
+.field_form{
+    padding: 6px;
+}
+textarea#descricao {
+    width: 100%;
+    height: 100px;
+}
+
+#container{
+    border: 1px solid grey;
+    border-radius: 15px;
+}
+
+#btn-send {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 10px;
+  }

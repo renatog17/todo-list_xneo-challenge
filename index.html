@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Todo List</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@500&family=Prompt:wght@500&family=Shantell+Sans&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    </href>
+</head>
+
+<body>
+
+    <div id="todo-list">
+        <div id="left-margin">
+        </div>
+        <div id="tasks">
+
+        </div>
+        <button id="btn-add">Nova tarefa</button>
+        <div id="form">
+            Nova tarefa
+            <form action="">
+                <div id="container">
+                    <div class="field_form">
+                        <label for="descricao">Descrição:</label>
+                        <textarea type="text" id="descricao" name="descricao"
+                            placeholder="Descrição da tarefa"></textarea>
+
+                    </div>
+
+
+                    <div class="field_form">
+                        <label for="prazo">Prazo:</label>
+                        <input type="date" id="prazo" name="prazo">
+                    </div>
+
+                    <div class="field_form">
+                        <label for="prioridade">Prioridade:</label>
+                        <select id="prioridade" name="prioridade">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                        </select>
+                    </div>
+                </div>
+                <div id="btn-send">
+                    <button type="submit">Enviar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+</body>
+
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="script.js"></script>
+</html>
