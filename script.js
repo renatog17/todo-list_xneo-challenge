@@ -7,7 +7,9 @@ $(document).ready(function () {
                 $('#tasks').empty();
                 response.forEach(function (task) {
                     var listItem = $('<li>').text(task.descricao + ' ' + task.prazo + ' ' + task.prioridade);
+                    var deleteIcon = $('<img>').attr('src', 'imgs/lixeira.png').addClass('delete-icon');
                     $('#tasks').append(listItem);
+                    listItem.append(deleteIcon);
                 });
             }
         });

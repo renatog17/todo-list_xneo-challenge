@@ -81,3 +81,7 @@ textarea#descricao {
 #btns button{
     margin-right: 10px;
 }
+
+#tasks img{
+    width: 15px;
+}
