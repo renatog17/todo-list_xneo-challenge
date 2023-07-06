@@ -33,23 +33,26 @@ body {
 }
 
 #btn-add{
-    position: relative;
-    top: 340px;
-    left: 475px;
+    position: fixed;
+    top: 550px;
+    left: 970px;
     height: 30px;
     border: none;
     background-color: #d5ffcf;
 }
 
 #form {
+    position: fixed;
     height: 250px;
     width: 300px;
     display: none;
     background-color: #d5ffcf;
     padding: 20px;
-    margin: 40px 137px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     border-radius: 15px;
-}
+  }
 
 #form form{
     padding: 5px;
@@ -69,8 +72,12 @@ textarea#descricao {
     border-radius: 15px;
 }
 
-#btn-send {
+#btns {
     display: flex;
     justify-content: flex-end;
-    margin-top: 10px;
-  }
+    margin-top: 5px;
+}
+
+#btns button{
+    margin-right: 10px;
+}
