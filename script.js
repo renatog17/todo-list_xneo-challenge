@@ -44,6 +44,7 @@ $(document).ready(function () {
             dataType: 'json',
             success: function (response) {
                 if (response.success) {
+                    $('#task-id').val('');
                     $('#descricao').val('');
                     $('#prazo').val('');
                     $('#prioridade').val('');
@@ -87,7 +88,8 @@ $(document).ready(function () {
     });
     // UPDATE crUd
     //Carregar os dados primeiro
-    $(document).on('click', '.edit-icon', function () {
+    $(document).on('click', '.edit-icon', function (e) {
+        e.preventDefault();
         var listItem = $(this).closest('li');
         //var descricao = listItem.find('.task-descricao').text();
         var id = listItem.data('task-id');
@@ -95,14 +97,16 @@ $(document).ready(function () {
         var prazo = listItem.data('task-prazo');
         var prioridade = listItem.data('task-prioridade');
         
+        $('#task-id').val(id)
         $('#descricao').val(descricao);
         $('#prazo').val(prazo);
         $('#prioridade').val(prioridade);
         
         $('#form').show();
         $('#update').show();
-
-        var descricaoUpdate = $('#descricao').val();
+        const title_form = $('#title_form');
+        title_form.text('Editar tarefa');
+       /* var descricaoUpdate = $('#descricao').val();
         var prazoUpdate = $('#prazo').val();
         var prioridadeUpdate = $('#prioridade').val();
         console.log(id)
@@ -112,9 +116,59 @@ $(document).ready(function () {
             prazo: prazoUpdate,
             prioridade: prioridadeUpdate
         };
-        console.log(taskData)
+        console.log(taskData)*/
         
     });
 
+    //danger
+
+    $(document).on('click', '#update', function (e) {
+       
+        e.preventDefault();
+        // Obtém os dados atualizados do formulário
+        var id = $('#task-id').val()
+        var descricao = $('#descricao').val();
+        var prazo = $('#prazo').val();
+        var prioridade = $('#prioridade').val();
+        
+        // Cria um objeto com os dados atualizados da tarefa
+        var taskData = {
+          taskId: id,
+          descricao: descricao,
+          prazo: prazo,
+          prioridade: prioridade
+        };
+        console.log('aqui')
+        console.log(taskData)
+        // Envie a requisição Ajax para atualizar a tarefa
+        $.ajax({
+          url: 'update_task.php',
+          type: 'POST',
+          data: taskData,
+          dataType: 'json',
+          success: function (response) {
+            if (response.success) {
+              // Atualizar a lista de tarefas após a atualização bem-sucedida
+              
+              // Ocultar o formulário de edição
+              
+              // Limpar os campos do formulário
+              $('#task-id').val('');
+              $('#descricao').val('');
+              $('#prazo').val('');
+              $('#prioridade').val('');
+              $('#form').hide();
+              $('#update').hide();
+              loadTasks();
+            } else {
+              alert('Erro ao atualizar as informações. Por favor, tente novamente.');
+            }
+          },
+          error: function () {
+            alert('Erro ao comunicar com o servidor. Por favor, tente novamente.');
+          }
+        });
+      });
+    //danger
 });
 
