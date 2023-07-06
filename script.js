@@ -107,7 +107,7 @@ $(document).ready(function () {
     //Carregar os dados primeiro
     $(document).on('click', '.edit-icon', function (e) {
         e.preventDefault();
-        var listItem = $(this).closest('li');
+        var listItem = $(this).closest('.task');
         //var descricao = listItem.find('.task-descricao').text();
         var id = listItem.data('task-id');
         var descricao = listItem.data('task-descricao');
@@ -118,26 +118,13 @@ $(document).ready(function () {
         $('#descricao').val(descricao);
         $('#prazo').val(prazo);
         $('#prioridade').val(prioridade);
-
+        $('#send').hide();
         $('#form').show();
         $('#update').show();
         const title_form = $('#title_form');
         title_form.text('Editar tarefa');
-        /* var descricaoUpdate = $('#descricao').val();
-         var prazoUpdate = $('#prazo').val();
-         var prioridadeUpdate = $('#prioridade').val();
-         console.log(id)
-         var taskData = {
-             taskId: id,
-             descricao: descricaoUpdate,
-             prazo: prazoUpdate,
-             prioridade: prioridadeUpdate
-         };
-         console.log(taskData)*/
-
     });
 
-    //danger
 
     $(document).on('click', '#update', function (e) {
 
@@ -186,6 +173,5 @@ $(document).ready(function () {
             }
         });
     });
-    //danger
 });
 
