@@ -110,11 +110,15 @@ textarea#descricao {
   .edit-icon {
     margin-left: 10px;
   }
-  
+  .edit-icon:hover{
+    cursor: pointer;
+  }
   .delete-icon {
     margin-left: 10px;
   }
-  
+  .delete-icon:hover{
+    cursor: pointer;
+  }
   .descricao {
     font-size: 12px;
   }
