@@ -1,9 +1,15 @@
 <?php
 include 'db_connection.php';
 
-// Consulta para buscar as tarefas do banco de dados
+// Preparar a consulta SQL com prepared statement
 $sql = 'SELECT * FROM tarefas';
-$result = $conn->query($sql);
+$stmt = $conn->prepare($sql);
+
+// Executar a consulta preparada
+$stmt->execute();
+
+// Obter os resultados da consulta
+$result = $stmt->get_result();
 
 // Converter os resultados em um array
 $tasks = array();
@@ -14,6 +20,7 @@ if ($result->num_rows > 0) {
 }
 
 // Fechar a conexão com o banco de dados
+$stmt->close();
 $conn->close();
 
 // Retornar os dados das tarefas como uma resposta JSON

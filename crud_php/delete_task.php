@@ -4,17 +4,20 @@ include 'db_connection.php';
 // Obtém o ID da tarefa a ser excluída do parâmetro POST
 $taskId = $_POST['taskId'];
 
-// Query para excluir a tarefa
-$sql = "DELETE FROM tarefas WHERE id = '$taskId'";
+// Preparar a consulta SQL com prepared statement
+$sql = "DELETE FROM tarefas WHERE id = ?";
+$stmt = $conn->prepare($sql);
+$stmt->bind_param("s", $taskId);
 
-// Executa a query de exclusão
-if ($conn->query($sql) === TRUE) {
-  $response = array('success' => true);
+// Executar a consulta preparada
+header('Content-Type: application/json'); // Define o cabeçalho como JSON
+if ($stmt->execute()) {
+    $stmt->close();
+    $response = array('success' => true);
+    echo json_encode($response); // Envia a resposta como JSON
 } else {
-  $response = array('success' => false);
+    $stmt->close();
+    $response = array('success' => false);
+    echo json_encode($response); // Envia a resposta como JSON
 }
-
-// Retorna a resposta como JSON
-header('Content-Type: application/json');
-echo json_encode($response);
 ?>

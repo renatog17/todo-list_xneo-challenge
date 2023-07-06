@@ -6,17 +6,20 @@ $descricao = $_POST['descricao'];
 $prazo = $_POST['prazo'];
 $prioridade = $_POST['prioridade'];
 
-// Inserir os dados na tabela de tarefas
-$sql = "INSERT INTO todolist.tarefas (descricao, prazo, prioridade) VALUES ('$descricao', '$prazo', '$prioridade')";
-header('Content-Type: application/json'); // Define o cabeçalho como JSON
+// Preparar a consulta SQL com prepared statement
+$sql = "INSERT INTO todolist.tarefas (descricao, prazo, prioridade) VALUES (?, ?, ?)";
+$stmt = $conn->prepare($sql);
+$stmt->bind_param("sss", $descricao, $prazo, $prioridade);
 
-if ($conn->query($sql) === TRUE) {
-    $conn->close();
+// Executar a consulta preparada
+header('Content-Type: application/json'); // Define o cabeçalho como JSON
+if ($stmt->execute()) {
+    $stmt->close();
     $response = array('success' => true);
     echo json_encode($response); // Envia a resposta como JSON
 } else {
-  $conn->close();
-  $response = array('success' => false);
-  echo json_encode($response); // Envia a resposta como JSON
+    $stmt->close();
+    $response = array('success' => false);
+    echo json_encode($response); // Envia a resposta como JSON
 }
 ?>

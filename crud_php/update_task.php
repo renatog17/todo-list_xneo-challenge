@@ -7,17 +7,20 @@ $descricao = $_POST['descricao'];
 $prazo = $_POST['prazo'];
 $prioridade = $_POST['prioridade'];
 
-// Query de atualização da tarefa
-$sql = "UPDATE tarefas SET descricao = '$descricao', prazo = '$prazo', prioridade = '$prioridade' WHERE id = '$taskId'";
+// Preparar a consulta SQL com prepared statement
+$sql = "UPDATE tarefas SET descricao = ?, prazo = ?, prioridade = ? WHERE id = ?";
+$stmt = $conn->prepare($sql);
+$stmt->bind_param("sssi", $descricao, $prazo, $prioridade, $taskId);
 
-// Executa a query de atualização
-if ($conn->query($sql) === TRUE) {
-  $response = array('success' => true);
+// Executar a consulta preparada
+header('Content-Type: application/json'); // Define o cabeçalho como JSON
+if ($stmt->execute()) {
+    $stmt->close();
+    $response = array('success' => true);
+    echo json_encode($response); // Envia a resposta como JSON
 } else {
-  $response = array('success' => false);
+    $stmt->close();
+    $response = array('success' => false);
+    echo json_encode($response); // Envia a resposta como JSON
 }
-
-// Retorna a resposta como JSON
-header('Content-Type: application/json');
-echo json_encode($response);
 ?>
