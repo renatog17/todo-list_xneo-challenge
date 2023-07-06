@@ -2,7 +2,7 @@ $(document).ready(function () {
     //READ cRud
     function loadTasks() {
         $.ajax({
-            url: 'load_tasks.php',
+            url: 'crud_php/load_tasks.php',
             type: 'GET',
             success: function (response) {
                 $('#tasks').empty();
@@ -58,7 +58,7 @@ $(document).ready(function () {
         };
 
         $.ajax({
-            url: 'create_task.php',
+            url: 'crud_php/create_task.php',
             type: 'POST',
             data: taskData,
             dataType: 'json',
@@ -88,7 +88,7 @@ $(document).ready(function () {
         // Confirmar exclusão da tarefa
         if (confirm('Tem certeza de que deseja excluir esta tarefa?')) {
             $.ajax({
-                url: 'delete_task.php',
+                url: 'crud_php/delete_task.php',
                 type: 'POST',
                 data: { taskId: taskId },
                 dataType: 'json',
@@ -148,7 +148,7 @@ $(document).ready(function () {
         console.log(taskData)
         // Envie a requisição Ajax para atualizar a tarefa
         $.ajax({
-            url: 'update_task.php',
+            url: 'crud_php/update_task.php',
             type: 'POST',
             data: taskData,
             dataType: 'json',
