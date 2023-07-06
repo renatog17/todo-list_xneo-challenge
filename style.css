@@ -33,7 +33,6 @@ body {
 }
 
 #btn-add{
-    background-image: url('./imgs/botao-adicionar.png');
     position: relative;
     top: 340px;
     left: 475px;
