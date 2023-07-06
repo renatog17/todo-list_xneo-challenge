@@ -1,5 +1,5 @@
 <?php
-// Conectar ao banco de dados (substitua com suas próprias credenciais)
+// Conectar ao banco de dados 
 $servername = 'localhost';
 $username = 'root';
 $password = 'admin';

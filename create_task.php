@@ -4,7 +4,7 @@ $descricao = $_POST['descricao'];
 $prazo = $_POST['prazo'];
 $prioridade = $_POST['prioridade'];
 
-// Conectar ao banco de dados (substitua com suas próprias credenciais)
+// Conectar ao banco de dados
 $servername = 'localhost';
 $username = 'root';
 $password = 'admin';
@@ -22,9 +22,11 @@ $sql = "INSERT INTO todolist.tarefas (descricao, prazo, prioridade) VALUES ('$de
 header('Content-Type: application/json'); // Define o cabeçalho como JSON
 
 if ($conn->query($sql) === TRUE) {
+    $conn->close();
     $response = array('success' => true);
     echo json_encode($response); // Envia a resposta como JSON
 } else {
+  $conn->close();
   $response = array('success' => false);
   echo json_encode($response); // Envia a resposta como JSON
 }
