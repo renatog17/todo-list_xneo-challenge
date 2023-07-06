@@ -93,3 +93,7 @@ textarea#descricao {
 #update{
     display: none;
 }
+
+.task{
+    background-color: aqua;
+}
