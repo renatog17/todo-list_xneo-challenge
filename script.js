@@ -11,21 +11,23 @@ $(document).ready(function () {
                     
                     var listItem = $('<div>')
                     listItem.addClass('task')
+                    var contentDiv = $('<div>')
 
                     var descricaoDiv = $('<div>').text(task.descricao)
                     descricaoDiv.addClass('descricao')
-                    listItem.append(descricaoDiv)
+                    contentDiv.append(descricaoDiv)
                     // Cria uma div para o prazo da tarefa
-                    var prazoDiv = $('<div>').text(task.prazo)
+                    var prazoDiv = $('<div>').text('Prazo: '+task.prazo)
                     prazoDiv.addClass('prazo') // Adiciona a classe 'prazo' à div
-                    listItem.append(prazoDiv) // Adiciona a div de prazo à div principal
+                    contentDiv.append(prazoDiv) // Adiciona a div de prazo à div principal
 
                     // Cria uma div para a prioridade da tarefa
-                    var prioridadeDiv = $('<div>').text(task.prioridade)
+                    var prioridadeDiv = $('<div>').text('Prioridade: '+task.prioridade)
                     prioridadeDiv.addClass('prioridade') // Adiciona a classe 'prioridade' à div
-                    listItem.append(prioridadeDiv)
+                    contentDiv.append(prioridadeDiv)
+                    contentDiv.addClass('content')
 
-                    
+                    listItem.append(contentDiv)
                     var deleteIcon = $('<img>').attr('src', 'imgs/lixeira.png').addClass('delete-icon');
                     var editIcon = $('<img>').attr('src', 'imgs/edit.png').addClass('edit-icon');
                     listItem.attr('data-task-id', task.id);

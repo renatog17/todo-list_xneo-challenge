@@ -94,6 +94,39 @@ textarea#descricao {
     display: none;
 }
 
-.task{
-    background-color: aqua;
+.task {
+    display: flex;
+    margin: 1px;
+    align-items: center;
 }
+.content{
+    width: 500px;
+    justify-content: space-between;
+    border: solid 1px rgb(68, 107, 110);
+    border-radius: 15px;
+    padding: 8px;
+
+  }
+  .edit-icon {
+    margin-left: 10px;
+  }
+  
+  .delete-icon {
+    margin-left: 10px;
+  }
+  
+  .descricao {
+    font-size: 12px;
+  }
+  
+  .prazo {
+    font-size: 9px;
+    margin-left: 8px; 
+    float: right;
+  }
+  
+  .prioridade {
+    font-size: 9px;
+    margin-left: 8px; 
+    float: right;
+  }
